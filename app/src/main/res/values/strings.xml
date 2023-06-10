@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ComposeSignInApp</string>
+    <string name="hey_there">Hey there</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="first_name_icon">First Name Icon</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="show_password">Show Password</string>
+</resources>
