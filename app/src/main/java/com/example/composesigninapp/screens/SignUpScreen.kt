@@ -14,10 +14,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.composesigninapp.R
+import com.example.composesigninapp.components.ButtonComponent
+import com.example.composesigninapp.components.CheckboxComponent
+import com.example.composesigninapp.components.ClickableLoginComponent
+import com.example.composesigninapp.components.DividerTextComponent
 import com.example.composesigninapp.components.HeadingTextComponent
 import com.example.composesigninapp.components.NormalTextComponent
 import com.example.composesigninapp.components.PasswordTextFieldComponent
 import com.example.composesigninapp.components.UserTextFieldComponent
+import com.example.composesigninapp.navigation.JCAuthAppRouter
+import com.example.composesigninapp.navigation.Screen
 
 @Composable
 fun SignUpScreen(){
@@ -30,8 +36,7 @@ fun SignUpScreen(){
             .padding(28.dp)) {
 
 
-        Column (
-            modifier = Modifier.fillMaxSize()){
+        Column (modifier = Modifier.fillMaxSize()){
 
             NormalTextComponent(value = stringResource(R.string.hey_there))
 
@@ -57,6 +62,26 @@ fun SignUpScreen(){
 
             PasswordTextFieldComponent(labelValue = stringResource(id = R.string.password), painterResource(
                 id = R.drawable.ic_lock))
+
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions), onTextSelected = {
+
+                JCAuthAppRouter.navigate(Screen.TermsAndConditionsScreen)
+
+            } )
+
+            Spacer(modifier = Modifier.height(50.dp))
+
+            ButtonComponent(value = stringResource(R.string.register))
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            DividerTextComponent()
+
+            ClickableLoginComponent(onTextSelected = {
+                JCAuthAppRouter.navigate(Screen.LoginScreen)
+            })
 
 
 

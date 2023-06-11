@@ -3,6 +3,7 @@ package com.example.composesigninapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -11,6 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composesigninapp.mainapp.JCAuthApp
+import com.example.composesigninapp.navigation.JCAuthAppRouter
+import com.example.composesigninapp.navigation.Screen
+import com.example.composesigninapp.screens.SignUpScreen
+import com.example.composesigninapp.screens.TermsAndConditionScreen
 import com.example.composesigninapp.ui.theme.ComposeSignInAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,8 +28,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    JCAuthApp()
-                    //Greeting("Android")
+
+
+                    Crossfade(targetState = JCAuthAppRouter.currentScreen) { currentState->
+
+                        when(currentState.value){
+
+                            is Screen.SignupScreen->{
+                                SignUpScreen()
+                            }
+
+                            is Screen.TermsAndConditionsScreen->{
+                                TermsAndConditionScreen()
+                            }
+
+                            is Screen.LoginScreen->{
+                                TermsAndConditionScreen()
+                            }
+
+                        }
+                    }
 
                 }
             }
@@ -32,19 +55,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ComposeSignInAppTheme {
         JCAuthApp()
-        //Greeting("Android")
     }
 }
